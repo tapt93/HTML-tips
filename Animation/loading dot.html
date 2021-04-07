@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Loading dot</title>
+  <style>
+    :root {
+      --animation-duration: 3s;
+      --spin-size: 80px;
+      --dot-size: 10px;
+      --dot-border-size: 5px;
+    }
+
+    body {
+      padding: 20px;
+    }
+
+    .spinning {
+      width: var(--spin-size);
+      height: var(--spin-size);
+      animation: spin var(--animation-duration) linear infinite;
+      animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    }
+
+    .dot::after {
+      content: '';
+      width: var(--dot-size);
+      height: var(--dot-size);
+      border: var(--dot-border-size) solid red;
+      border-radius: 50%;
+      position: absolute;
+      filter: hue-rotate(calc(var(--value) *45deg))
+    }
+
+    .dot {
+      width: var(--spin-size);
+      height: var(--spin-size);
+      position: absolute;
+      transform: rotate(calc(var(--value)*45deg));
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="spinning">
+    <div class="dot dot-1" style="--value: 1"></div>
+    <div class="dot dot-2" style="--value: 2"></div>
+    <div class="dot dot-3" style="--value: 3"></div>
+    <div class="dot dot-4" style="--value: 4"></div>
+    <div class="dot dot-5" style="--value: 5"></div>
+    <div class="dot dot-6" style="--value: 6"></div>
+    <div class="dot dot-7" style="--value: 7"></div>
+    <div class="dot dot-8" style="--value: 8"></div>
+  </div>
+</body>
+
+</html>
